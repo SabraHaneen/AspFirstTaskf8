@@ -15,5 +15,17 @@ namespace WebApplication5.Controllers
             return View("index", employee);
             
         }
+        public IActionResult CreateEmployee()
+        {
+            return View("CreateEmployee");
+        }
+        public IActionResult Store(Employee employee)
+        {
+            //return Content($"Store{employee.Name}--{employee.Title}--{employee.Age}");
+            context.Employee.Add(employee);
+            context.SaveChanges();
+            
+            return RedirectToActionPermanent("index");
+        }
     }
 }
